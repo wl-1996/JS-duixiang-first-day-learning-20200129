@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小女孩行走-函数风格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 79px;
+            height: 108px;
+            background:  url("images/girl.png") no-repeat 0px -216px;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+<script>
+    let oDiv = document.getElementsByTagName("div")[0]
+    console.log(oDiv)
+
+    let nowleft = 0
+    let buzi = 0
+
+    setInterval(function () {
+        nowleft += 4;
+        buzi++;
+        if(buzi > 7){
+            buzi = 0
+        }
+        oDiv.style.left = nowleft + "px"
+        oDiv.style.backgroundPosition = - buzi * 79 + "px -216px"
+    },30)
+</script>
+</body>
+</html>

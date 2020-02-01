@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小女孩行走-对象风格</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 79px;
+            height: 108px;
+            background: url("images/girl.png") no-repeat 0px -216px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    function Girl(top, left) {
+        //定义小女孩的属性
+        this.top = top;
+        this.left = left;
+        this.buzi = 0;
+        this.timer = null;
+
+        //定义一个初始化方法
+        this.init = function () {
+            this.dom = document.createElement("div")
+            document.body.appendChild(this.dom)
+
+            this.dom.style.left = this.left + "px"
+            this.dom.style.top = this.top + "px"
+        }
+
+        //设置方法
+        this.walk = function () {
+            //要备份，因为进入setInterval之后this就是window了
+            let self = this
+            this.timer = setInterval(function () {
+                self.left++;
+                self.buzi++;
+                if (self.buzi > 7) {
+                    self.buzi = 0;
+                }
+                if (self.left > 1000) {
+                    self.die()
+                }
+                self.dom.style.left = self.left + "px"
+                self.dom.style.backgroundPosition = -79 * self.buzi + "px -216px"
+            }, 5)
+        }
+
+        this.die = function () {
+            clearInterval(this.timer)
+            document.body.removeChild(this.dom)
+        }
+
+        this.init()
+        this.walk()
+    }
+
+
+    setInterval(function () {
+        new Girl(Math.random() * 400, 100)
+    }, 1000)
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深入理解构造函数</title>
+
+</head>
+<body>
+
+<script>
+    //构造函数里面如果没有了this，那么就废了，就不能给隐秘新创建出来的对象添加属性。但是里面的语句能够执行！！
+    // function People() {
+    //     for (var i = 0,  sum = 0; i <= 100; i++) {
+    //         sum += i
+    //     }
+    //     alert(sum)
+    // }
+    //
+    // let xiaoming = new People()
+    // console.log(xiaoming)
+
+    //构造函数中，不允许出现return语句，出现return语句了，将不能返回新创建的那个对象
+    // function People(name,age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     return{"a":1,"b":2}
+    // }
+    //
+    // let xiaoming = new People("小明",12)
+    // console.log(xiaoming)//输出的是 {"a":1,"b":2}
+
+    //工厂模式，我们的课上稍微看一下，后面设计模式课上，再说：
+    // function createPeople(name,age){
+    //     let obj = {};
+    //     obj.name = name;
+    //     obj.age = age;
+    //     return obj;
+    // }
+    //
+    // let xiaoming = createPeople("小明",12)
+    // console.log(xiaoming)
+
+    // JS没有规定构造函数中的语句的规范，想怎么写就怎么写：
+    function People(name, age) {
+        this.name = name;
+        this.age = age;
+        // if (this.age >= 18) {
+        //     this.state = "成年人"
+        // } else {
+        //     this.state = "未成年人"
+        // }
+
+        this.state = this.age >= 18 ? "成年人" : "未成年人"
+    }
+
+    let xiaoming = new People("小明",17)
+    console.log(xiaoming)
+    console.log(xiaoming.state)
+</script>
+</body>
+</html>

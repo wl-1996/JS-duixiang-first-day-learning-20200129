@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类和实例</title>
+</head>
+<body>
+
+<script>
+    function People(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.sayHello = function () {
+            alert("你好我是" + this.name + ",nice to meet you")
+        }
+    }
+
+    function Dog(name, pinzhong, age, sex) {
+        this.name = name;
+        this.pinzhong = pinzhong;
+        this.age = age;
+        this.sex = sex;
+        this.wangwang = function () {
+            alert("汪汪汪汪" + this.name + "汪汪汪汪汪汪")
+        }
+    }
+
+    let xiaoming = new People("小明", 11, "男")
+    xiaoming.sayHello()
+
+    let xiaobai = new Dog("小白", "京巴", 2, "公的")
+    xiaobai.wangwang()
+</script>
+</body>
+</html>

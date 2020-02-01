@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链揭示</title>
+</head>
+<body>
+<script>
+    // let str = new String("你好啊")
+    // console.log(str.toString())
+    //
+    // let str1 = "你好啊"
+    // let str2 = "你好啊"
+    //
+    // console.log(str1 === str2)
+
+    // let str = "哈哈"
+    // console.log(str.__proto__.__proto__.constructor)
+
+    let num = 123;
+    console.log(num.__proto__.constructor)
+
+    let a = true;
+    console.log(a.__proto__.constructor)
+
+    let b = null;
+    console.log(b.__proto__.constructor)
+</script>
+</body>
+</html>
